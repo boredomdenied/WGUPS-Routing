@@ -1,0 +1,154 @@
+WGUPS Routing Program for CS950 Data Structures and Algorithms 2
+
+
+Rubric relevant notes on many sections follow to expedite the process of grading submission:
+
+
+A:  Algorithm selection
+    The scenario outlines a Traveling Salesman Problem. This is known to be NP-hard.
+    A NP-complete solution for NP-hard problems are not polynomial. For this reason I've chosen the greedy algorithm known
+    as Nearest Neighbor. This has been implemented in algo/NearestNeighbor.py. It has a Big-O time complexity of O(n^2).
+    Please refer to the comment block seen starting at L6 of the aforementioned file containing the algorithm for
+    further details.
+
+B1: Logic comments
+    I've chosen to give comments at the head of each code block and inside for anything that is not quite apparent.
+    When initializing variables and data structures often in-line comments are given for brevity without sacrificing
+    readability.
+
+
+B2: Application of programming models
+    The host environment is Python 3.8, Ubuntu 20.04 beta LTS, PyCharm IDE. Data is fed in through the package_data.txt
+    file. Data is not hosted on a remote server application; therefore, the communications protocol is not applicable.
+    I can only imagine that this is a section which has remained through shifts in the course requirements.
+    It would seem data was at one point in time gathered from a remote API. This is no longer the case.
+
+
+B3: Space-time and Big-O
+    Big-O calculations are performed throughout the code in comments.
+
+
+B4: Adaptability
+    The algorithm solution in the program is of polynomial time complexity and would not pose
+    significant challenges by way of scaling within reason. Things to take into consideration include: Hard coding the
+    number of packages. With each loop that this number is hard set, it would need to be reset. Multiple solutions exist
+    You could keep a global state of the lines in the cvs file, and apply this to all currently hard coded sections. The
+    number of trucks also could be increased, else reused as packages and drivers increased.
+
+
+B5: Software Efficiency and Maintainability
+    The program is designed as modularized logical structures consisting of multiple folders and files. It is organized
+    in an associative way. It is maintainable specifically because of the structure given. As the program would
+    inevitably grow in size over time, cues from the current design can be taken to expand it out, ie increase folders
+    and packages, and sort them logically. The program execution time is polynomial, thus it is efficient in this respect.
+    Maintaining the software would require checking through the limitations presented in B4, namely that sections of the
+    file are currently hard-coded and assume a static number of packages. If this assumption is no longer valid, additional
+    work would be required for the program to function properly.
+
+
+B6: Self-Adjusting Data Structures
+    The algorithm has a helper function which evaluates the size of truck_list and performs a run per truck. If more trucks
+    are added it will adjust accordingly and run efficiently. The nearest neighbor algorithm is in-itself self-adjusting. As
+    information is fed in via the location_list, it will adjust the optimal final path.
+
+
+C:  Original Code
+    All code written is of my own imagination. It is capable of meeting all logistical considerations and is capable
+    of displaying combined mileage totals which would appear to meet the standard.
+
+
+C1: Identification Information
+    Line one of Main.py contains the required information.
+
+
+C2: Process and Flow Comments
+    Code is properly commenting at each code block. It has been added to tell the story of how the program plays out.
+    This gives clarity of information flow as code is executed.
+
+
+D:  Data Structure
+    Multiple data structures are given in this program. A two dimensional array is used to build the [A]Matrix for storing
+    package data. A [B]hash table is built from another two dimensional array as a base.W
+    The [C]package itself is an Object.
+
+D1: Explanation of Data Structure
+    Data flows through the program as follows. It is read through the package_data.txt file. Each line is fed into the
+    [B]Hash Table, Creating a [C] Package object with properties input per comma delimited chunk of data.
+
+E:  Hash Table
+    The hash table is in MyHash.py and includes both a lookup function and an insert function. It includes all data inside
+    the Package object.
+
+
+F:  Lookup Function
+    The lookup function is provided as a gateway to the CLI. It is technically capable of being publicly accessible at
+    a later date. It is located at controller/Interface.py. Lookup can be performed on a single package L25. Lookup can
+    also be performed on all packages L40. It displays all relevant information including package: id, delivery status,
+    address, city, zipcode, weight, delivery_time, and deadline.
+
+
+G:  Interface
+    A CLI has been implemented. This starts the user at a Main Menu. The user can select four options. They can [1] lookup
+    all packages at a given time, [2] lookup a single package status at a given time, [3] print verification for the packages
+    delivered at the end of the current day, and they can [4] exit the program when finished.
+
+
+G1,2,3:
+    Screenshots have been attached for the relevant times. As well you can verify the information is accurate by running
+    the same code used to produce them. In Main.py file uncommenting L52, L55, L58 will result in the same output to console
+    for the times of 9:05AM, 10:00AM, and 12:00PM
+
+
+H:  Screenshots of Code Execution
+    Additional screenshots have been provided which show output of options through the MainMenu and/or uncomment any other
+    sections which are left commented as convenience checks for the grader.
+
+
+I1: Strengths of the Chosen Algorithm
+    The nearest neighbor algorithm implemented in this code has the benefit of being performed in polynomial time, that is
+    O(N^2) time complexity. This combined with the helper function which adapts to the size of the truck_list, makes it
+    a good choice for this problem as presented.
+
+
+I2: Verification of algorithm
+    Verification of Algorithm is performed. Mileage is calculated for each truck and as a total. It logically checks
+    if a package has not been delivered in time and will print "All packages delivered on time" otherwise
+
+I3:
+    As indicated directly below, an NP-complete solution would satisfy project requirements, if a backup is provided.
+    Two particular algos worth mentioning are branch and bound and backtracking. These would meet requirements.
+
+I3/A:
+    If N is small, an NP-complete solution can be implemented with modest hardware. This would enable the most efficient
+    routes to be located for drivers of all Trucks. While this may have a worst-case factor of N!, in practice this is
+    generally not seen. It may be that a two tier solution, where by a heuristic is run first then an NP-complete solution
+    is run secondarily, and if completed in time to be presented to drivers this would be so, else the nearest neighbor solution
+    would be available and given to drivers.
+
+
+J:
+   I would have liked to worked with dynamic data from a remote API. If given the task of designing a course or showing
+   this type of problem (TSP) for my portfolio, I would have liked to pull from a public API which a random date of routes,
+   else would create permutations that gave out seemingly random special delivery constraints, delivery time constraints,
+   and also would implement a baseline standard to compete against. A naive solution such as NN could be used on the server
+   and students or in this case myself could compete against it with dynamic data which is generated each time requests are
+   made to the server, else at a sane interval.
+
+
+K1A,B,C:
+   I2 verification is in play. Manual verification of the hash table and lookup function is freely available in the code.
+   The lookup and insertion for hash table is O(1) which is highly efficient. As more data is added, the implications on
+   time complexity are if a polynomial increase in time complexity reading data from the file into the hash table and
+   subsequent Package objects. Space complexity demands would be of a linear increase.
+
+K2/A:
+    Following along with sections I3,I3/A, if an NP-complete solution was provided, linked-lists and binary trees would
+    be required. A binary tree would alongside the I3 listed branch and bound algorithm would change the space and time
+    complexity. For instance implementing a linked-list system would add pointers to head and tail of each list of data,
+    increasing space requirements. Implementing a binary tree would potentially save in more than one aspect of the program.
+    Lookups could be reduced to O(logN) where they are currently O(N). Worse case for NP-hard solutions that find optimal
+    solutions are N!, though best case given that the binary tree is used could in reality be O(logN). This trade-off would
+    indicate greater variability and maximum time execution from a given set of packages than the current implementation.
+
+L: Sources
+   A sources.txt file is provided. As well when the source is used an comment is provided in code.

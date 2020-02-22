@@ -1,0 +1,11 @@
+Used to build the Matrix in Matrix.py
+Author: Pranav Kevarakonda
+Date: Not provided
+Title: Python | Using 2D arrays/lists the right way
+Source Location: https://www.geeksforgeeks.org/python-using-2d-arrays-lists-the-right-way/
+
+Used to splice a colon into string
+Author: Pythonforbeginners.com contributing writer
+Date April 09, 2013
+Title: String Manipulation in Python
+Source Location: https://www.pythonforbeginners.com/basics/string-manipulation-in-python
